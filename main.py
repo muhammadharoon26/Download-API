@@ -13,13 +13,13 @@ def search_image(s):
         driver.get(s)
     else:
         driver.get('https://www.google.com/search?as_st=y&tbm=isch&as_q=&as_epq={}&as_oq=&as_eq=&cr=&as_sitesearch=&safe=images&tbs=isz:lt,islt:xga'.format(s.replace(' ','+')))
-    time.sleep(1)
+    # time.sleep(1)
 
 def image_click(i):
     image_results = driver.find_elements(By.CSS_SELECTOR, ".rg_i")
     first_image = image_results[i]
     first_image.click()
-    time.sleep(1)
+    # time.sleep(1)
 
 def download_image(i):
     image_element = driver.find_elements(By.CSS_SELECTOR, ".rg_i")
@@ -31,7 +31,7 @@ if __name__ == "__main__":
     s = input("SEARCH: ")
     search_image(s)
     print("Downloading Images of "+s)
-    for i in range(5):
+    for i in range(100):
         image_click(i)
         download_image(i)
     print("All Images Downloaded !")
