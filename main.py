@@ -12,8 +12,8 @@ def search_image(s):
     if s.find(".") != -1:
         driver.get(s)
     else:
-        driver.get('http://www.google.com/search?q=+' + s+'&safe=images&hl=en&sxsrf=APwXEdeZXyl594MxMTf2q1leOlXs4kYjCQ:1682071583825&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjy-fX53Lr-AhWJq6QKHZ48D5gQ_AUoAnoECAEQBA&biw=1280&bih=569&dpr=1.5')
-    time.sleep(5)
+        driver.get('https://www.google.com/search?as_st=y&tbm=isch&as_q=&as_epq={}&as_oq=&as_eq=&cr=&as_sitesearch=&safe=images&tbs=isz:lt,islt:xga'.format(s.replace(' ','+')))
+    time.sleep(1)
 
 def image_click(i):
     image_results = driver.find_elements(By.CSS_SELECTOR, ".rg_i")
@@ -24,7 +24,7 @@ def image_click(i):
 def download_image(i):
     image_element = driver.find_elements(By.CSS_SELECTOR, ".rg_i")
     image_url = image_element[i].get_attribute("src")
-    local_file = f"D:\\Git-Hub\\Download-API\\Image #{i+1}.jpg"
+    local_file = f"D:\\Git-Hub\\Download-API\\Images\\{s} Image #{i+1}.jpg"
     urllib.request.urlretrieve(image_url, local_file)
 
 if __name__ == "__main__":
